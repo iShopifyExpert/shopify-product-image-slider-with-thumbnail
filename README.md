@@ -1,0 +1,1 @@
+# shopify-product-image-slider-with-thumbnail
