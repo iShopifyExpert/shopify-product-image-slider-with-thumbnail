@@ -1,0 +1,43 @@
+<div class="product-gallery">
+  <div class="slider-for">
+    {% for media in product.media %}
+    <div class="item-slide"><a data-fancybox="gallery" href="{{ media | img_url: 'master'}}"><img src="{{ media | img_url: '800x800'}}"  title="img" alt="img" /></a></div>
+    {% endfor %}
+  </div>
+  <div class="slider-nav">
+    {% for media in product.media %}
+    <div class="thumb-slide"><img src="{{ media | img_url: '150x150'}}" /></div>
+    {% endfor %}
+  </div>
+</div>
+{{ '//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css' | stylesheet_tag }}
+{{ '//cdn.jsdelivr.net/jquery.slick/1.5.9/slick.css' | stylesheet_tag }}
+{{ '//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js' | script_tag }}
+{{ '//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js' | script_tag }}
+{{ '//cdn.jsdelivr.net/jquery.slick/1.5.9/slick.min.js' | script_tag }}
+<script type="text/javascript">
+  $('.slider-for').slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+    fade: true,
+    asNavFor: '.slider-nav'
+  });
+  $('.slider-nav').slick({
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    asNavFor: '.slider-for',
+    dots: true,
+    centerMode: false,
+    focusOnSelect: true
+  });
+</script>
+<style>
+.product-gallery {
+    max-width: 550px;
+    margin: 0 auto;
+}
+.thumb-slide {
+    cursor: pointer;
+}
+</style>
